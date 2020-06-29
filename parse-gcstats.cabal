@@ -1,4 +1,4 @@
-cabal-version:       2.2
+cabal-version:       2.0
 
 name:                parse-gcstats
 version:             0.1.0.0
@@ -6,7 +6,7 @@ synopsis:            Parse machine-readable GHC GC output stats.
 description:         Parse machine-readable GHC GC output stats.
 homepage:            https://github.com/Fuuzetsu/parse-gcstats
 bug-reports:         https://github.com/Fuuzetsu/parse-gcstats/issues
-license:             BSD-3-Clause
+license:             BSD3
 license-file:        LICENSE
 author:              Mateusz Kowalczyk
 maintainer:          fuuzetsu@fuuzetsu.co.uk
@@ -17,7 +17,7 @@ extra-source-files:  CHANGELOG.md
 
 library
   exposed-modules:     Data.GCStats.Parse
-  build-depends:       base ^>=4.8.0.0
+  build-depends:       base >=4.6.0.1
                      , attoparsec
                      , text
                      , unordered-containers
@@ -29,7 +29,7 @@ test-suite parse-gcstats-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   main-is:             ParseTest.hs
-  build-depends:       base ^>=4.8.0.0
+  build-depends:       base >=4.6.0.1
                      , parse-gcstats
                      , attoparsec
                      , filepath
