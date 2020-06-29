@@ -18,7 +18,7 @@ tested-with: GHC==8.10.1, GHC==8.8.3, GHC==8.6.5, GHC==8.4.4, GHC==8.2.2, GHC==8
 
 library
   exposed-modules:     Data.GCStats.Parse
-  build-depends:       base >=4.6.0.0 && < 4.14.0.0
+  build-depends:       base >=4.6.0.0 && < 4.16.0.0
                      , attoparsec
                      , text
                      , unordered-containers
@@ -30,7 +30,7 @@ test-suite parse-gcstats-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   main-is:             ParseTest.hs
-  build-depends:       base >=4.6.0.0 && < 4.14.0.0
+  build-depends:       base >=4.6.0.0 && < 4.16.0.0
                      , parse-gcstats
                      , attoparsec
                      , filepath
