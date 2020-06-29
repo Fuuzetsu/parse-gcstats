@@ -1,4 +1,3 @@
-{-# LANGUAGE ApplicativeDo #-}
 module Data.GCStats.Parse
   ( gcStatsParser
   ) where
