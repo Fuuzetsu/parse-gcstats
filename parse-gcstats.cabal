@@ -30,7 +30,7 @@ test-suite parse-gcstats-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   main-is:             ParseTest.hs
-  build-depends:       base >=4.6.0.0 < 4.14.0.0
+  build-depends:       base >=4.6.0.0 && < 4.14.0.0
                      , parse-gcstats
                      , attoparsec
                      , filepath
