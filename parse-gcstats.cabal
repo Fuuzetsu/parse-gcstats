@@ -33,6 +33,8 @@ test-suite parse-gcstats-test
   build-depends:       base >=4.6.0.0 && < 4.16.0.0
                      , parse-gcstats
                      , attoparsec
+                     , conduit
+                     , conduit-extra
                      , filepath
                      , tasty
                      , tasty-golden
