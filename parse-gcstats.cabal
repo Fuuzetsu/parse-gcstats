@@ -17,7 +17,7 @@ extra-source-files:  CHANGELOG.md
 
 library
   exposed-modules:     Data.GCStats.Parse
-  build-depends:       base ^>=4.12.0.0
+  build-depends:       base ^>=4.8.0.0
                      , attoparsec
                      , text
                      , unordered-containers
@@ -29,7 +29,7 @@ test-suite parse-gcstats-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   main-is:             ParseTest.hs
-  build-depends:       base ^>=4.12.0.0
+  build-depends:       base ^>=4.8.0.0
                      , parse-gcstats
                      , attoparsec
                      , filepath
