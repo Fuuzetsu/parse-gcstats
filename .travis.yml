@@ -11,7 +11,7 @@ ghc:
 - 8.0.2
 - 7.10.3
 install:
-- cabal new-update
+- cabal update
 script:
 - cabal new-build --enable-tests
 - cabal new-test --enable-tests
