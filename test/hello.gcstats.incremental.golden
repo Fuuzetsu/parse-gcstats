@@ -1,47 +1,46 @@
-bytes allocated: 51248.0 - 1:1 (0)-2:31 (84)
-num_GCs: 1.0 - 1:1 (0)-2:19 (19)
-average_bytes_used: 44408.0 - 2:19 (19)-3:34 (53)
-max_bytes_used: 44408.0 - 3:34 (53)-4:30 (83)
-num_byte_usage_samples: 1.0 - 4:30 (83)-5:34 (117)
-peak_megabytes_allocated: 2.0 - 5:34 (117)-6:36 (153)
-init_cpu_seconds: 8.5e-5 - 6:36 (153)-7:35 (188)
-init_wall_seconds: 8.2e-5 - 7:35 (188)-8:36 (224)
-mut_cpu_seconds: 5.1e-5 - 8:36 (224)-9:34 (258)
-mut_wall_seconds: 5.0e-5 - 9:34 (258)-10:35 (293)
-GC_cpu_seconds: 6.1e-5 - 10:35 (293)-11:33 (326)
-GC_wall_seconds: 6.1e-5 - 11:33 (326)-12:34 (360)
-exit_cpu_seconds: 8.0e-6 - 12:34 (360)-13:35 (395)
-exit_wall_seconds: 8.0e-6 - 13:35 (395)-14:36 (431)
-total_cpu_seconds: 2.06e-4 - 14:36 (431)-15:36 (467)
-total_wall_seconds: 2.02e-4 - 15:36 (467)-16:37 (504)
-major_gcs: 1.0 - 16:37 (504)-17:21 (525)
-allocated_bytes: 51248.0 - 17:21 (525)-18:31 (556)
-max_live_bytes: 44408.0 - 18:31 (556)-19:30 (586)
-max_large_objects_bytes: 41120.0 - 19:30 (586)-20:39 (625)
-max_compact_bytes: 0.0 - 20:39 (625)-21:29 (654)
-max_slop_bytes: 25224.0 - 21:29 (654)-22:30 (684)
-max_mem_in_use_bytes: 2097152.0 - 22:30 (684)-23:38 (722)
-cumulative_live_bytes: 44408.0 - 23:38 (722)-24:37 (759)
-copied_bytes: 3312.0 - 24:37 (759)-25:27 (786)
-par_copied_bytes: 0.0 - 25:27 (786)-26:28 (814)
-cumulative_par_max_copied_bytes: 0.0 - 26:28 (814)-27:43 (857)
-cumulative_par_balanced_copied_bytes: 0.0 - 27:43 (857)-28:48 (905)
-gc_cpu_percent: 0.0 - 28:48 (905)-29:33 (938)
-gc_wall_percent: 0.0 - 29:33 (938)-30:34 (972)
-fragmentation_bytes: 0.0 - 30:34 (972)-31:31 (1003)
-alloc_rate: 1.014269598e9 - 31:31 (1003)-32:31 (1034)
-productivity_cpu_percent: 0.248412 - 32:31 (1034)-33:43 (1077)
-productivity_wall_percent: 0.252121 - 33:43 (1077)-34:44 (1121)
-gen_0_collections: 0.0 - 34:44 (1121)-35:29 (1150)
-gen_0_par_collections: 0.0 - 35:29 (1150)-36:33 (1183)
-gen_0_cpu_seconds: 0.0 - 36:33 (1183)-37:36 (1219)
-gen_0_wall_seconds: 0.0 - 37:36 (1219)-38:37 (1256)
-gen_0_max_pause_seconds: 0.0 - 38:37 (1256)-39:42 (1298)
-gen_0_avg_pause_seconds: 0.0 - 39:42 (1298)-40:42 (1340)
-gen_1_collections: 1.0 - 40:42 (1340)-41:29 (1369)
-gen_1_par_collections: 0.0 - 41:29 (1369)-42:33 (1402)
-gen_1_cpu_seconds: 6.1e-5 - 42:33 (1402)-43:36 (1438)
-gen_1_wall_seconds: 6.1e-5 - 43:36 (1438)-44:37 (1475)
-gen_1_max_pause_seconds: 6.1e-5 - 44:37 (1475)-45:42 (1517)
-gen_1_avg_pause_seconds: 6.1e-5 - 45:42 (1517)-46:42 (1559)
-END - 46:42 (1559)-47:3 (1562)
+bytes allocated: 51248.0
+num_GCs: 1.0
+average_bytes_used: 44408.0
+max_bytes_used: 44408.0
+num_byte_usage_samples: 1.0
+peak_megabytes_allocated: 2.0
+init_cpu_seconds: 8.5e-5
+init_wall_seconds: 8.2e-5
+mut_cpu_seconds: 5.1e-5
+mut_wall_seconds: 5.0e-5
+GC_cpu_seconds: 6.1e-5
+GC_wall_seconds: 6.1e-5
+exit_cpu_seconds: 8.0e-6
+exit_wall_seconds: 8.0e-6
+total_cpu_seconds: 2.06e-4
+total_wall_seconds: 2.02e-4
+major_gcs: 1.0
+allocated_bytes: 51248.0
+max_live_bytes: 44408.0
+max_large_objects_bytes: 41120.0
+max_compact_bytes: 0.0
+max_slop_bytes: 25224.0
+max_mem_in_use_bytes: 2097152.0
+cumulative_live_bytes: 44408.0
+copied_bytes: 3312.0
+par_copied_bytes: 0.0
+cumulative_par_max_copied_bytes: 0.0
+cumulative_par_balanced_copied_bytes: 0.0
+gc_cpu_percent: 0.0
+gc_wall_percent: 0.0
+fragmentation_bytes: 0.0
+alloc_rate: 1.014269598e9
+productivity_cpu_percent: 0.248412
+productivity_wall_percent: 0.252121
+gen_0_collections: 0.0
+gen_0_par_collections: 0.0
+gen_0_cpu_seconds: 0.0
+gen_0_wall_seconds: 0.0
+gen_0_max_pause_seconds: 0.0
+gen_0_avg_pause_seconds: 0.0
+gen_1_collections: 1.0
+gen_1_par_collections: 0.0
+gen_1_cpu_seconds: 6.1e-5
+gen_1_wall_seconds: 6.1e-5
+gen_1_max_pause_seconds: 6.1e-5
+gen_1_avg_pause_seconds: 6.1e-5

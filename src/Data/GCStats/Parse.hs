@@ -1,8 +1,9 @@
+{-# LANGUAGE BangPatterns #-}
 module Data.GCStats.Parse
   ( gcStatsParser
   , gcStatsIncr
-  , gcStatsIncrSkipEnd
-  , gcStatsIncrFirstEntry
+  , ParserState
+  , initialParserState
   ) where
 
 import Control.Applicative (optional, (<|>))
@@ -18,44 +19,51 @@ import GHC.Stats
 -- | Parse a map of keys to values. All values are assumed to be
 -- 'Double' though many are actually integers.
 gcStatsParser :: P.Parser (HashMap Text Double)
-gcStatsParser = do
-  m'firstEntry <- gcStatsIncrFirstEntry
-  entries <- case m'firstEntry of
-    -- No point trying to parse more if we can't even get first entry.
-    Nothing -> pure mempty
-    Just firstEntry -> (:) firstEntry <$> P.many' nextEntry
-  -- We've parsed all the entries there were, for completion and to
-  -- ensure nothing went wrong, expect the terminating bracket.
-  gcStatsIncrSkipEnd
-  pure $! HashMap.fromList entries
+gcStatsParser =
+  let getEntries !m ps = do
+        m'e <- gcStatsIncr ps
+        case m'e of
+          Nothing -> pure m
+          Just ((k, v), ps') -> getEntries (HashMap.insert k v m) ps'
+  in getEntries mempty initialParserState
 
--- | Skip start of file which contains command line use and yield
--- first entry, if there is one. You should run this before
--- 'gcStatsIncr'.
-gcStatsIncrFirstEntry :: P.Parser (Maybe (Text, Double))
-gcStatsIncrFirstEntry = do
-  P.skipWhile (not . P.isEndOfLine)
-  P.skipSpace
-  void $ P.char '['
-  optional entry
+data ParserState
+  = AtStart
+  | PastStart
 
--- | Check if we have a closing brace, indicating end of entries.
---
--- Does not check for EOF.
-gcStatsIncrSkipEnd :: P.Parser ()
-gcStatsIncrSkipEnd = P.skipSpace <* P.char ']'
+initialParserState :: ParserState
+initialParserState = AtStart
 
 -- | Parser that returns entries as they come in, effectively
--- tokenising the input. In interest of streaming, does no input
--- validation on whether the sequence of tokens it produces actually
--- makes sense.
+-- streaming the entries.
 --
--- Whatever way you're parsing, you ought to first do one run of
--- 'gcStatsIncrFirstEntry' after which you can invoke 'gcStatsIncr'
--- until it no longer matches. This function returns @Nothing@ if end
--- of entries is seen.
-gcStatsIncr :: P.Parser (Maybe (Text, Double))
-gcStatsIncr = (Just <$> nextEntry) <|> (Nothing <$ gcStatsIncrSkipEnd)
+-- You have to pass subsequent 'ParserState' results to next
+-- invocations. If function returns 'Nothing', parsing is finished.
+gcStatsIncr :: ParserState -> P.Parser (Maybe ((Text, Double), ParserState))
+gcStatsIncr ps = case ps of
+  AtStart -> fmap nextSt gcStatsIncrFirstEntry
+  PastStart ->
+    let entryOrEnd = (Just <$> nextEntry) <|> (Nothing <$ gcStatsIncrSkipEnd)
+    in fmap nextSt entryOrEnd
+  where
+    nextSt Nothing = Nothing
+    nextSt (Just e) = Just (e, PastStart)
+
+    -- Skip start of file which contains command line use and yield
+    -- first entry, if there is one.
+    gcStatsIncrFirstEntry :: P.Parser (Maybe (Text, Double))
+    gcStatsIncrFirstEntry = do
+      P.skipWhile (not . P.isEndOfLine)
+      P.skipSpace
+      void $ P.char '['
+      optional entry
+
+    -- Check if we have a closing brace, indicating end of entries.
+    --
+    -- Does not check for EOF.
+    gcStatsIncrSkipEnd :: P.Parser ()
+    gcStatsIncrSkipEnd = P.skipSpace <* P.char ']'
+
 
 entry :: P.Parser (Text, Double)
 entry = do
